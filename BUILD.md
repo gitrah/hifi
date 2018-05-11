@@ -85,3 +85,4 @@ In the examples below the variable $NAME would be replaced by the name of the de
 #### Devices
 
 You can support external input/output devices such as Leap Motion, MIDI, and more by adding each individual SDK in the visible building path. Refer to the readme file available in each device folder in [interface/external/](interface/external) for the detailed explanation of the requirements to use the device.
+
