@@ -339,6 +339,8 @@ static const int MAX_CONCURRENT_RESOURCE_DOWNLOADS = 16;
 // we will never drop below the 'min' value
 static const int MIN_PROCESSING_THREAD_POOL_SIZE = 1;
 
+static const QString WINDOW_TITLE_PREFIX = "VRouxm";
+
 static const QString SNAPSHOT_EXTENSION = ".jpg";
 static const QString JPG_EXTENSION = ".jpg";
 static const QString PNG_EXTENSION = ".png";
@@ -1077,7 +1079,7 @@ Application::Application(int& argc, char** argv, QElapsedTimer& startupTimer, bo
     QFontDatabase::addApplicationFont(PathUtils::resourcesPath() + "fonts/Raleway-Regular.ttf");
     QFontDatabase::addApplicationFont(PathUtils::resourcesPath() + "fonts/Raleway-Bold.ttf");
     QFontDatabase::addApplicationFont(PathUtils::resourcesPath() + "fonts/Raleway-SemiBold.ttf");
-    _window->setWindowTitle("High Fidelity Interface");
+    _window->setWindowTitle("High Fidelity " + WINDOW_TITLE_PREFIX);
 
     Model::setAbstractViewStateInterface(this); // The model class will sometimes need to know view state details from us
 
@@ -6180,7 +6182,7 @@ void Application::updateWindowTitle() const {
         }
     }
 
-    QString title = QString() + (!username.isEmpty() ? username + " @ " : QString())
+    QString title = WINDOW_TITLE_PREFIX + (": ") + (!username.isEmpty() ? username + " @ " : QString())
         + currentPlaceName + connectionStatus + loginStatus + buildVersion;
 
 #ifndef WIN32

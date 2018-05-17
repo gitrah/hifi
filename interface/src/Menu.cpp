@@ -206,6 +206,17 @@ Menu::Menu() {
     addCheckableActionToQMenuAndActionHash(avatarMenu, MenuOption::EnableFlying, 0, true,
         avatar.get(), SLOT(setFlyingEnabled(bool)));
 
+
+    // Avatar > Announce Pogo
+    addCheckableActionToQMenuAndActionHash(avatarMenu, MenuOption::AnnouncePogo, 0, true,
+        avatar.get(), SLOT(setAnnouncePogo(bool)));
+
+    // Avatar > Pogo
+    addActionToQMenuAndActionHash(avatarMenu,
+        MenuOption::Pogo,
+        0,// QML Qt::Key_Space,
+        avatar.get(), SLOT(pogo()));
+
     // Avatar > AvatarBookmarks related menus -- Note: the AvatarBookmarks class adds its own submenus here.
     auto avatarBookmarks = DependencyManager::get<AvatarBookmarks>();
     avatarBookmarks->setupMenus(this, avatarMenu);

@@ -897,6 +897,18 @@ public:
      */
     Q_INVOKABLE bool getFlyingEnabled();
 
+    /**jsdoc
+     * @function MyAvatar.setAnnouncePogo
+     * @param {boolean} announce
+     */
+    Q_INVOKABLE void setAnnouncePogo(bool announce);
+
+    /**jsdoc
+     * @function MyAvatar.getAnnouncePogo
+     * @returns {boolean}
+     */
+    Q_INVOKABLE bool getAnnouncePogo();
+
 
     /**jsdoc
      * @function MyAvatar.getAvatarScale
@@ -1001,6 +1013,8 @@ public slots:
      * }
      */
     void increaseSize();
+
+    void pogo();
 
     /**jsdoc
      * Decrease the avatar's scale by five percent, down to a minimum scale of <code>0.25</code>.
@@ -1379,6 +1393,7 @@ private:
     std::bitset<MAX_DRIVE_KEYS> _disabledDriveKeys;
 
     bool _enableFlying { true };
+    bool _announcePogo { true };
     bool _wasPushing { false };
     bool _isPushing { false };
     bool _isBeingPushed { false };

@@ -62,6 +62,7 @@
 #include "EntityEditPacketSender.h"
 #include "MovingEntitiesOperator.h"
 #include "SceneScriptingInterface.h"
+#include "ui/PogoDialog.h"
 
 using namespace std;
 
@@ -2364,6 +2365,14 @@ void MyAvatar::decreaseSize() {
     setTargetScale(newTargetScale);
 }
 
+void MyAvatar::pogo() {
+	if(_announcePogo) {
+		PogoDialog::announcePogo();
+	}
+	qCDebug(interfaceapp) << "jummp!\n";
+    _characterController.jump();
+}
+
 void MyAvatar::resetSize() {
     // attempt to reset avatar size to the default (clamped to domain limits)
     const float DEFAULT_AVATAR_SCALE = 1.0f;
@@ -2667,6 +2676,15 @@ void MyAvatar::setFlyingEnabled(bool enabled) {
     _enableFlying = enabled;
 }
 
+void MyAvatar::setAnnouncePogo(bool announce) {
+    if (QThread::currentThread() != thread()) {
+        QMetaObject::invokeMethod(this, "setAnnouncePogo", Q_ARG(bool, announce));
+        return;
+    }
+
+    _announcePogo = announce;
+}
+
 bool MyAvatar::isFlying() {
     // Avatar is Flying, and is not Falling, or Taking off
     return _characterController.getState() == CharacterController::State::Hover;
@@ -2680,6 +2698,10 @@ bool MyAvatar::isInAir() {
 bool MyAvatar::getFlyingEnabled() {
     // May return true even if client is not allowed to fly in the zone.
     return _enableFlying;
+}
+
+bool MyAvatar::getAnnouncePogo() {
+    return _announcePogo;
 }
 
 // Public interface for targetscale

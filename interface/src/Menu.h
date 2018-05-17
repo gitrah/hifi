@@ -32,6 +32,7 @@ namespace MenuOption {
     const QString AnimDebugDrawAnimPose = "Debug Draw Animation";
     const QString AnimDebugDrawDefaultPose = "Debug Draw Default Pose";
     const QString AnimDebugDrawPosition= "Debug Draw Position";
+    const QString AnnouncePogo = "Announce Pogo";
     const QString AskToResetSettings = "Ask To Reset Settings";
     const QString AssetMigration = "ATP Asset Migration";
     const QString AssetServer = "Asset Browser";
@@ -149,6 +150,7 @@ namespace MenuOption {
     const QString PhysicsShowBulletConstraints = "Show Bullet Constraints";
     const QString PhysicsShowBulletConstraintLimits = "Show Bullet Constraint Limits";
     const QString PipelineWarnings = "Log Render Pipeline Warnings";
+    const QString Pogo = "Pogo";
     const QString Preferences = "General...";
     const QString Quit =  "Quit";
     const QString ReloadAllScripts = "Reload All Scripts";
